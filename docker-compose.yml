@@ -1,0 +1,49 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: phonebook-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: phonebook
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend-dotnet
+    container_name: phonebook-dotnet-backend
+    restart: unless-stopped
+    # No `ports:` here on purpose: the backend is only reachable
+    # through the frontend's Nginx reverse proxy on :80 (/api/*).
+    # It stays reachable internally as http://backend:8000.
+    # (Single-port deployment: frontend + backend share port 80.)
+    environment:
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=phonebook;Username=postgres;Password=postgres
+      # JWT_SECRET / JWT_EXPIRATION_MINUTES are also honored (same
+      # names as the previous backend); when unset, the appsettings
+      # defaults apply.
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    container_name: phonebook-frontend
+    restart: unless-stopped
+    # Single public port: Nginx serves the Vue SPA (/) and
+    # reverse-proxies the .NET API (/api/*).
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

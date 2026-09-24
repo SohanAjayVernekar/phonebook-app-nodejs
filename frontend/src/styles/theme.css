@@ -1,0 +1,282 @@
+/*
+ * =========================================================
+ * DESIGN TOKENS — Phonebook App
+ * =========================================================
+ *
+ * One source of truth for every colour in the app.
+ *
+ *   :root                     → light theme (default)
+ *   html[data-theme="dark"]   → dark theme
+ *
+ * Visual language: premium dark-blue SaaS dashboard.
+ * Deep navy surfaces, blue-gray borders, cool gray text
+ * and a single electric-blue accent reserved for active
+ * navigation, primary actions, focus states and small
+ * highlights.
+ *
+ * The anti-flash script in index.html sets
+ * `data-theme` on <html> before first paint.
+ *
+ * Hierarchy (kept deliberately subtle — never pure #000):
+ *
+ *   bg-app  →  bg-sidebar / bg-topbar  →  bg-card
+ *          →  bg-elevated (modals, dropdowns, toasts)
+ *          →  bg-input / bg-inset
+ *
+ * =========================================================
+ */
+
+:root {
+  color-scheme: light;
+
+  /* -------------------------------------------------------
+     SURFACES
+  ------------------------------------------------------- */
+
+  --bg-app: #e7e5e0;
+  --bg-app-alt: #e0ded8;
+  --bg-sidebar: #f2f0eb;
+  --bg-topbar: rgba(242, 240, 235, 0.88);
+  --bg-card: #f7f6f3;
+  --bg-elevated: #faf9f6;
+  --bg-input: #f0efeb;
+  --bg-inset: #e4e2dc;
+  --bg-glass: rgba(247, 246, 243, 0.88);
+  --bg-hover: rgba(20, 18, 14, 0.06);
+  --bg-active: rgba(29, 78, 216, 0.08);
+  --bg-mask: rgba(9, 14, 25, 0.5);
+
+  /* -------------------------------------------------------
+     BORDERS
+  ------------------------------------------------------- */
+
+  --border: #d6d2c9;
+  --border-subtle: rgba(20, 18, 14, 0.08);
+  --border-strong: #c0bbb0;
+  --border-input: #cdc9bf;
+  --border-glass: rgba(255, 255, 255, 0.7);
+
+  /* -------------------------------------------------------
+     TEXT
+  ------------------------------------------------------- */
+
+  --text-primary: #1c1917;
+  --text-secondary: #57534e;
+  --text-muted: #78716c;
+  --text-faint: #a8a29e;
+  --text-on-accent: #ffffff;
+  --text-link: #1d4ed8;
+
+  /* -------------------------------------------------------
+     ACCENT (primary brand — blue)
+  ------------------------------------------------------- */
+
+  --accent: #1d4ed8;
+  --accent-hover: #1e40af;
+  --accent-alt: #3b82f6;
+  --accent-rgb: 29, 78, 216;
+  --accent-alt-rgb: 59, 130, 246;
+  --accent-soft: #dbeafe;
+  --accent-soft-hover: #bfdbfe;
+  --accent-text: #1d4ed8;
+  --accent-border: #93c5fd;
+  --focus-rgb: 59, 130, 246;
+  --focus-border: #60a5fa;
+
+  /* soft-blue companion (stat icons, avatars) */
+  --violet-soft: #dbeafe;
+  --violet-text: #1d4ed8;
+
+  /* white-on-accent helpers (same in both themes) */
+  --on-accent-dim: rgba(255, 255, 255, 0.4);
+  --sheen-rgb: 255, 255, 255;
+
+  /* -------------------------------------------------------
+     STATUS
+  ------------------------------------------------------- */
+
+  --success: #16a34a;
+  --success-rgb: 22, 163, 74;
+  --success-text: #15803d;
+  --success-soft: #ecfdf3;
+  --success-border: #bbf7d0;
+
+  --warning: #f59e0b;
+  --warning-rgb: 245, 158, 11;
+  --warning-text: #c2410c;
+  --warning-soft: #fff7ed;
+  --warning-border: #fed7aa;
+
+  --danger: #ef4444;
+  --danger-rgb: 239, 68, 68;
+  --danger-text: #be123c;
+  --danger-soft: #fff1f2;
+  --danger-border: #fecdd3;
+
+  /* -------------------------------------------------------
+     CATEGORIES
+  ------------------------------------------------------- */
+
+  --cat-work-bg: #eff6ff;
+  --cat-work-fg: #2563eb;
+
+  --cat-family-bg: #ffe4e6;
+  --cat-family-fg: #be123c;
+
+  --cat-friend-bg: #ecfdf3;
+  --cat-friend-fg: #15803d;
+
+  /* -------------------------------------------------------
+     SHADOWS / GLOWS
+  ------------------------------------------------------- */
+
+  --shadow-rgb: 20, 18, 14;
+
+  --shadow-sm: 0 1px 2px rgba(20, 18, 14, 0.06);
+  --shadow-md: 0 8px 24px rgba(20, 18, 14, 0.1);
+  --shadow-lg: 0 24px 60px rgba(20, 18, 14, 0.16);
+  --shadow-xl: 0 32px 80px rgba(20, 18, 14, 0.22);
+
+  /* -------------------------------------------------------
+     SKELETONS / CHARTS / MISC
+  ------------------------------------------------------- */
+
+  --skeleton-a: #e9e7e2;
+  --skeleton-b: #f4f3f1;
+
+  --chart-1: #1d4ed8;
+  --chart-2: #3b82f6;
+  --chart-3: #0d9488;
+  --chart-4: #f472b6;
+  --chart-5: #e11d48;
+}
+
+
+/* =========================================================
+   DARK THEME (deep navy)
+======================================================== */
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* -------------------------------------------------------
+     SURFACES — deep navy, sidebar darkest
+  ------------------------------------------------------- */
+
+  --bg-app: #090e17;
+  --bg-app-alt: #0c1220;
+  --bg-sidebar: #0b111c;
+  --bg-topbar: rgba(11, 17, 28, 0.88);
+  --bg-card: #101828;
+  --bg-elevated: #131c2e;
+  --bg-input: #0d1526;
+  --bg-inset: #070c15;
+  --bg-glass: rgba(16, 24, 40, 0.85);
+  --bg-hover: rgba(255, 255, 255, 0.05);
+  --bg-active: rgba(59, 130, 246, 0.14);
+  --bg-mask: rgba(2, 5, 11, 0.66);
+
+  /* -------------------------------------------------------
+     BORDERS — subtle blue-gray
+  ------------------------------------------------------- */
+
+  --border: #1e2a3f;
+  --border-subtle: rgba(148, 163, 184, 0.08);
+  --border-strong: #33415c;
+  --border-input: #2a3a56;
+  --border-glass: rgba(255, 255, 255, 0.07);
+
+  /* -------------------------------------------------------
+     TEXT — white / cool gray-blue
+  ------------------------------------------------------- */
+
+  --text-primary: #f1f5f9;
+  --text-secondary: #a3b2c5;
+  --text-muted: #7e8ba0;
+  --text-faint: #5d6b84;
+  --text-on-accent: #ffffff;
+  --text-link: #93c5fd;
+
+  /* -------------------------------------------------------
+     ACCENT — electric blue
+  ------------------------------------------------------- */
+
+  --accent: #3b82f6;
+  --accent-hover: #60a5fa;
+  --accent-alt: #1d4ed8;
+  --accent-rgb: 59, 130, 246;
+  --accent-alt-rgb: 29, 78, 216;
+  --accent-soft: rgba(59, 130, 246, 0.13);
+  --accent-soft-hover: rgba(59, 130, 246, 0.2);
+  --accent-text: #93c5fd;
+  --accent-border: rgba(59, 130, 246, 0.38);
+  --focus-rgb: 59, 130, 246;
+  --focus-border: #3b82f6;
+
+  /* soft-blue companion (stat icons, avatars) */
+  --violet-soft: rgba(96, 165, 250, 0.15);
+  --violet-text: #bfdbfe;
+
+  /* white-on-accent helpers (same in both themes) */
+  --on-accent-dim: rgba(255, 255, 255, 0.4);
+  --sheen-rgb: 255, 255, 255;
+
+  /* -------------------------------------------------------
+     STATUS
+  ------------------------------------------------------- */
+
+  --success: #22c55e;
+  --success-rgb: 34, 197, 94;
+  --success-text: #4ade80;
+  --success-soft: rgba(34, 197, 94, 0.13);
+  --success-border: rgba(34, 197, 94, 0.35);
+
+  --warning: #f59e0b;
+  --warning-rgb: 245, 158, 11;
+  --warning-text: #fbbf24;
+  --warning-soft: rgba(245, 158, 11, 0.13);
+  --warning-border: rgba(245, 158, 11, 0.35);
+
+  --danger: #f43f5e;
+  --danger-rgb: 244, 63, 94;
+  --danger-text: #fda4af;
+  --danger-soft: rgba(244, 63, 94, 0.13);
+  --danger-border: rgba(244, 63, 94, 0.35);
+
+  /* -------------------------------------------------------
+     CATEGORIES
+  ------------------------------------------------------- */
+
+  --cat-work-bg: rgba(59, 130, 246, 0.16);
+  --cat-work-fg: #93c5fd;
+
+  --cat-family-bg: rgba(244, 63, 94, 0.14);
+  --cat-family-fg: #fda4af;
+
+  --cat-friend-bg: rgba(34, 197, 94, 0.15);
+  --cat-friend-fg: #86efac;
+
+  /* -------------------------------------------------------
+     SHADOWS / GLOWS
+  ------------------------------------------------------- */
+
+  --shadow-rgb: 0, 0, 0;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.55);
+  --shadow-xl: 0 32px 80px rgba(0, 0, 0, 0.62);
+
+  /* -------------------------------------------------------
+     SKELETONS / CHARTS / MISC
+  ------------------------------------------------------- */
+
+  --skeleton-a: #101827;
+  --skeleton-b: #182234;
+
+  --chart-1: #3b82f6;
+  --chart-2: #60a5fa;
+  --chart-3: #2dd4bf;
+  --chart-4: #f472b6;
+  --chart-5: #fb7185;
+}
